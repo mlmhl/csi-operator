@@ -12,10 +12,9 @@
 # distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 # WARRANTIES OF ANY KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations under the License.
-#/
+#
 
 REGISTRY_NAME=docker.io/tkestack
-
 
 # A "canary" image gets built if the current commit is the head of the remote "master" branch.
 # That branch does not exist when building some other branch in TravisCI.
@@ -73,7 +72,7 @@ endif
 	go generate ./pkg/... ./cmd/...
 
 # Build and push the docker image
-image: build
+image: csi-operator
 	cp output/bin/csi-operator build/docker
 	docker build -t ${IMAGE_NAME}:${IMAGE_TAGS} build/docker
 	rm build/docker/csi-operator
