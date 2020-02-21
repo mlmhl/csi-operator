@@ -168,6 +168,11 @@ func generateControllerRole(csiDeploy *csiv1.CSI) *rbacv1.ClusterRole {
 			Resources: []string{"configmaps", "endpoints"},
 			Verbs:     []string{"get", "list", "watch", "update", "create", "delete"},
 		},
+		{
+			APIGroups: []string{"coordination.k8s.io"},
+			Resources: []string{"leases"},
+			Verbs:     []string{"get", "list", "watch", "update", "create", "delete"},
+		},
 	}
 	if needSecretRule(csiDeploy) {
 		rules = append(rules, rbacv1.PolicyRule{
